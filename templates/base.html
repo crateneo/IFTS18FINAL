@@ -1,4 +1,13 @@
 {% extends "bootstrap/base.html" %}
+<!-- La herencia de plantillas nos permite hacer un esqueleto de plantilla, para que todas las páginas de nuestro
+sitio web sean similares.crearmos una plantilla base de donde se van a heredar todas las demás, e indicaremos los bloques que las plantillas hijas pueden sobreescribir.
+Algunas consideraciones:
+
+    se ha creado  el bloque page_content, en las plantillas hijas vamos a poder rescribir esos dos bloque para 
+    poner el título de la página y el contenido. Podríamos indicar todos los bloques que necesitamos.
+    se ha incluido una hoja de estilo que está en la carpeta static -->
+
+
 {% block head %}
 {{ super() }}
 <link rel="shortcut icon" href="{{ url_for('static', filename = 'favicon.png') }}" type="image/x-icon">
@@ -21,7 +30,11 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
+<!-- genera contenido según el usuario este logueado o no. -->
+
                 {%  if 'nombre' in session %}
+ <!-- si existe alguna de las variables session tendremos un usuario logueado en el sistema. Esta variable es accesible desde html -->
+
                 <li><a href="/users">Usuarios</a></li>
                 <li><a href="/ventas">Ultimas ventas</a></li>
                 <li class="nav-item dropdown">
@@ -40,6 +53,7 @@
                 <li><a href="/logout">Logout </a></li>
             </ul>
             {% elif 'nombre' not in session %}
+            <!-- el usuario no esta logueado -->
             <ul class="nav navbar-nav">
                 <li><a href="/login">Login</a></li>
                 <li><a href="/registro">Registro</a></li>

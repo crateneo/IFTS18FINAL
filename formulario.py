@@ -1,7 +1,13 @@
 from flask_wtf import FlaskForm
+"""Flask-WTF es una extensión de Flask que nos permite trabajar con la librería WTForm de python,
+ que nos facilita la generación y validación de formularios HTML."""
 from wtforms import StringField, SubmitField, PasswordField, IntegerField
 from wtforms import validators
 
+
+""" hemos creado una clase heredada de la clase FlaskForm donde hemos indicado 
+distintos atributos que son objetos de los distintos tipos de campos que podemos indicar,
+ donde inicializamos distintos datos (label, validaciones,...)."""
 class MyLogin(FlaskForm):
     """se especifica los campos que tendra el formulario, el cual se usara en la funcion login() del archivo
      principal.py """
